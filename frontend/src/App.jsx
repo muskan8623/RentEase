@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+// Customer pages
 import Home from "./Home";
 import Products from "./Products";
 import ProductDetails from "./ProductDetails";
@@ -11,6 +12,11 @@ import PaymentDemo from "./PaymentDemo";
 import OrderConfirmation from "./OrderConfirmation";
 import RentalHistory from "./RentalHistory";
 
+// Customer authentication
+import Login from "./auth/Login";
+import Register from "./auth/Register";
+
+// Seller pages
 import SellerLogin from "./seller/SellerLogin";
 import SellerDashboard from "./seller/SellerDashboard";
 import SellerProducts from "./seller/SellerProducts";
@@ -18,6 +24,7 @@ import AddProduct from "./seller/AddProduct";
 import SellerOrders from "./seller/SellerOrders";
 import EditProduct from "./seller/EditProduct";
 
+// Seller protection
 import SellerProtectedRoute from "./seller/SellerProtectedRoute";
 
 function App() {
@@ -25,17 +32,20 @@ function App() {
     <BrowserRouter>
       <Routes>
 
-        {/* ================= CUSTOMER ROUTES ================= */}
+        {/* =========================
+            CUSTOMER AUTHENTICATION
+        ========================== */}
 
-        <Route
-          path="/"
-          element={<Home />}
-        />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
 
-        <Route
-          path="/products"
-          element={<Products />}
-        />
+        {/* =========================
+            CUSTOMER PAGES
+        ========================== */}
+
+        <Route path="/" element={<Home />} />
+
+        <Route path="/products" element={<Products />} />
 
         <Route
           path="/product/:id"
@@ -77,14 +87,18 @@ function App() {
           element={<RentalHistory />}
         />
 
-        {/* ================= SELLER LOGIN ================= */}
+        {/* =========================
+            SELLER LOGIN
+        ========================== */}
 
         <Route
           path="/seller/login"
           element={<SellerLogin />}
         />
 
-        {/* ================= PROTECTED SELLER ROUTES ================= */}
+        {/* =========================
+            SELLER DASHBOARD
+        ========================== */}
 
         <Route
           path="/seller/dashboard"
@@ -95,6 +109,10 @@ function App() {
           }
         />
 
+        {/* =========================
+            SELLER PRODUCTS
+        ========================== */}
+
         <Route
           path="/seller/products"
           element={
@@ -103,6 +121,10 @@ function App() {
             </SellerProtectedRoute>
           }
         />
+
+        {/* =========================
+            ADD PRODUCT
+        ========================== */}
 
         <Route
           path="/seller/add-product"
@@ -113,6 +135,10 @@ function App() {
           }
         />
 
+        {/* =========================
+            SELLER ORDERS
+        ========================== */}
+
         <Route
           path="/seller/orders"
           element={
@@ -121,6 +147,10 @@ function App() {
             </SellerProtectedRoute>
           }
         />
+
+        {/* =========================
+            EDIT PRODUCT
+        ========================== */}
 
         <Route
           path="/seller/edit-product/:id"
