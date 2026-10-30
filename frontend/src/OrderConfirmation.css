@@ -1,0 +1,583 @@
+/* =====================================================
+   ORDER CONFIRMATION PAGE
+===================================================== */
+
+.order-confirmation-page {
+  min-height: 100vh;
+
+  background: #f7f8fc;
+
+  padding: 35px 20px 70px;
+
+  box-sizing: border-box;
+
+  color: #111827;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.order-confirmation-container {
+  width: min(900px, 100%);
+
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  border: 1px solid #e1e5ec;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 10px 35px rgba(15, 23, 42, 0.06);
+}
+
+/* =====================================================
+   ORDER REFERENCE
+===================================================== */
+
+.order-reference {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.order-reference-label {
+  display: block;
+
+  color: #635bda;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  margin-bottom: 8px;
+}
+
+.order-reference h1 {
+  margin: 0;
+
+  font-size: 25px;
+
+  color: #111827;
+
+  letter-spacing: -0.5px;
+}
+
+.order-reference-icon {
+  width: 50px;
+  height: 50px;
+
+  border-radius: 13px;
+
+  background: #f0edff;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 25px;
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+.confirmation-section {
+  padding: 25px 0;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.confirmation-section h2 {
+  margin: 0 0 22px;
+
+  text-align: center;
+
+  color: #111827;
+
+  font-size: 17px;
+
+  font-weight: 700;
+}
+
+/* =====================================================
+   PRODUCT CARD
+===================================================== */
+
+.confirmation-product-card {
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  min-height: 125px;
+
+  padding: 12px 18px;
+
+  border: 1px solid #dce2eb;
+
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   PRODUCT IMAGE
+===================================================== */
+
+.confirmation-product-image {
+  width: 95px;
+  height: 95px;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  overflow: hidden;
+
+  background: #f1f3f7;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  position: relative;
+}
+
+.confirmation-product-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  padding: 6px;
+
+  box-sizing: border-box;
+}
+
+.confirmation-image-placeholder {
+  width: 100%;
+  height: 100%;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 40px;
+}
+
+/* =====================================================
+   PRODUCT INFORMATION
+===================================================== */
+
+.confirmation-product-info {
+  min-width: 0;
+}
+
+.confirmation-product-info h3 {
+  margin: 0 0 8px;
+
+  color: #111827;
+
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+.confirmation-product-info span {
+  display: block;
+
+  color: #6b7280;
+
+  font-size: 13px;
+
+  margin-bottom: 7px;
+}
+
+.confirmation-product-info p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+/* =====================================================
+   PRICE DETAILS
+===================================================== */
+
+.confirmation-price-details {
+  margin-top: 20px;
+}
+
+.confirmation-price-row {
+  min-height: 43px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.confirmation-price-row span {
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.confirmation-price-row strong {
+  color: #111827;
+
+  font-size: 13px;
+}
+
+/* =====================================================
+   TOTAL
+===================================================== */
+
+.confirmation-total-row {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-top: 22px;
+
+  margin-top: 10px;
+}
+
+.confirmation-total-row span {
+  color: #111827;
+
+  font-size: 15px;
+
+  font-weight: 700;
+}
+
+.confirmation-total-row strong {
+  color: #111827;
+
+  font-size: 25px;
+
+  font-weight: 800;
+}
+
+/* =====================================================
+   CUSTOMER INFORMATION
+===================================================== */
+
+.customer-section {
+  border-bottom: none;
+
+  padding-bottom: 20px;
+}
+
+.customer-information {
+  width: 100%;
+}
+
+.customer-row {
+  min-height: 43px;
+
+  display: grid;
+
+  grid-template-columns: 220px 1fr;
+
+  align-items: center;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  gap: 20px;
+}
+
+.customer-row span {
+  color: #64748b;
+
+  font-size: 13px;
+
+  text-align: right;
+}
+
+.customer-row strong {
+  color: #111827;
+
+  font-size: 13px;
+
+  text-align: right;
+
+  overflow-wrap: anywhere;
+}
+
+.address-value {
+  line-height: 1.5;
+}
+
+/* =====================================================
+   DEMO NOTICE
+===================================================== */
+
+.order-demo-notice {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 12px;
+
+  padding: 15px 17px;
+
+  border-radius: 11px;
+
+  background: #fff8ed;
+
+  border: 1px solid #f7dfbd;
+
+  margin-top: 20px;
+}
+
+.order-demo-notice > span {
+  width: 24px;
+  height: 24px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f59e0b;
+
+  color: #ffffff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+.order-demo-notice strong {
+  display: block;
+
+  color: #92400e;
+
+  font-size: 13px;
+
+  margin-bottom: 3px;
+}
+
+.order-demo-notice p {
+  margin: 0;
+
+  color: #92400e;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =====================================================
+   ACTIONS
+===================================================== */
+
+.order-confirmation-actions {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+.order-home-button,
+.order-products-button {
+  min-height: 45px;
+
+  padding: 0 20px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.order-home-button {
+  border: 1px solid #d1d5db;
+
+  background: #ffffff;
+
+  color: #374151;
+}
+
+.order-home-button:hover {
+  background: #f9fafb;
+}
+
+.order-products-button {
+  border: none;
+
+  background: #4f46e5;
+
+  color: #ffffff;
+}
+
+.order-products-button:hover {
+  background: #4338ca;
+
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   EMPTY ORDER
+===================================================== */
+
+.order-confirmation-empty {
+  width: min(500px, 100%);
+
+  margin: 100px auto;
+
+  padding: 45px 30px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.order-empty-icon {
+  font-size: 50px;
+
+  margin-bottom: 15px;
+}
+
+.order-confirmation-empty h1 {
+  margin: 0 0 10px;
+
+  font-size: 25px;
+}
+
+.order-confirmation-empty p {
+  color: #6b7280;
+
+  font-size: 14px;
+
+  margin-bottom: 25px;
+}
+
+.order-confirmation-empty button {
+  border: none;
+
+  background: #4f46e5;
+
+  color: #ffffff;
+
+  padding: 12px 20px;
+
+  border-radius: 9px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .order-confirmation-page {
+    padding: 15px 10px 40px;
+  }
+
+  .order-confirmation-container {
+    padding: 20px 15px;
+
+    border-radius: 14px;
+  }
+
+  .order-reference h1 {
+    font-size: 22px;
+  }
+
+  .confirmation-product-card {
+    padding: 10px;
+
+    gap: 12px;
+  }
+
+  .confirmation-product-image {
+    width: 78px;
+    height: 78px;
+  }
+
+  .confirmation-product-info h3 {
+    font-size: 14px;
+  }
+
+  .customer-row {
+    grid-template-columns: 1fr;
+
+    gap: 5px;
+
+    padding: 11px 0;
+  }
+
+  .customer-row span {
+    text-align: left;
+  }
+
+  .customer-row strong {
+    text-align: left;
+  }
+
+  .order-confirmation-actions {
+    flex-direction: column;
+  }
+
+  .order-home-button,
+  .order-products-button {
+    width: 100%;
+  }
+}

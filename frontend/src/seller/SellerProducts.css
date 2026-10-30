@@ -1,0 +1,773 @@
+
+/* ================================
+   SELLER PRODUCTS PAGE
+================================ */
+
+.seller-products-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.seller-products-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 18px 6%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.seller-products-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 750;
+}
+
+.seller-products-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* ================================
+   ADD PRODUCT BUTTON
+================================ */
+
+.seller-add-product-button {
+  border: none;
+  border-radius: 9px;
+
+  background: #111827;
+  color: #ffffff;
+
+  padding: 12px 18px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.seller-add-product-button:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+/* ================================
+   CONTENT
+================================ */
+
+.seller-products-content {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+
+  padding: 40px 0 60px;
+}
+
+/* ================================
+   TOOLBAR
+================================ */
+
+.seller-products-toolbar {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  padding: 18px;
+
+  margin-bottom: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.seller-products-search {
+  width: 320px;
+  max-width: 100%;
+
+  height: 44px;
+
+  padding: 0 14px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.seller-products-search:focus {
+  border-color: #111827;
+}
+
+/* ================================
+   PRODUCT GRID
+================================ */
+
+.seller-products-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 22px;
+}
+
+/* ================================
+   PRODUCT CARD
+================================ */
+
+.seller-product-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  box-shadow: 0 7px 22px rgba(15, 23, 42, 0.05);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.seller-product-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 13px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* ================================
+   PRODUCT IMAGE
+================================ */
+
+.seller-product-image {
+  height: 210px;
+
+  background: #f3f4f6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.seller-product-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+/* ================================
+   PRODUCT INFO
+================================ */
+
+.seller-product-info {
+  padding: 20px;
+}
+
+.seller-product-category {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  background: #f3f4f6;
+
+  color: #4b5563;
+
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.seller-product-info h3 {
+  margin: 0 0 12px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.seller-product-price {
+  margin-bottom: 5px;
+
+  font-size: 19px;
+  font-weight: 750;
+
+  color: #111827;
+}
+
+.seller-product-price span {
+  font-size: 12px;
+  font-weight: 500;
+
+  color: #6b7280;
+}
+
+.seller-product-deposit {
+  margin-bottom: 13px;
+
+  color: #6b7280;
+
+  font-size: 13px;
+}
+
+/* ================================
+   AVAILABILITY
+================================ */
+
+.seller-product-availability {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 6px 10px;
+
+  border-radius: 20px;
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.seller-product-availability.available {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.seller-product-availability.unavailable {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* ================================
+   CARD ACTIONS
+================================ */
+
+.seller-product-actions {
+  display: flex;
+
+  gap: 10px;
+
+  margin-top: 18px;
+}
+
+.seller-product-actions button {
+  flex: 1;
+
+  height: 40px;
+
+  border-radius: 8px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.seller-edit-button {
+  border: 1px solid #d1d5db;
+
+  background: #ffffff;
+  color: #374151;
+}
+
+.seller-edit-button:hover {
+  background: #f9fafb;
+}
+
+.seller-delete-button {
+  border: 1px solid #fecaca;
+
+  background: #ffffff;
+  color: #b91c1c;
+}
+
+.seller-delete-button:hover {
+  background: #fef2f2;
+}
+
+/* ================================
+   EMPTY STATE
+================================ */
+
+.seller-products-empty {
+  background: #ffffff;
+
+  border: 1px dashed #d1d5db;
+  border-radius: 15px;
+
+  padding: 70px 20px;
+
+  text-align: center;
+}
+
+.seller-products-empty-icon {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.seller-products-empty h2 {
+  margin: 0 0 8px;
+
+  font-size: 21px;
+}
+
+.seller-products-empty p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 950px) {
+  .seller-products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 650px) {
+  .seller-products-header {
+    padding: 16px 5%;
+    align-items: flex-start;
+  }
+
+  .seller-products-header h1 {
+    font-size: 21px;
+  }
+
+  .seller-products-header p {
+    font-size: 12px;
+  }
+
+  .seller-add-product-button {
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+
+  .seller-products-content {
+    width: 90%;
+    padding: 28px 0 45px;
+  }
+
+  .seller-products-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .seller-products-search {
+    width: 100%;
+  }
+
+  .seller-products-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   EDIT PRODUCT MODAL
+================================ */
+
+.seller-edit-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+}
+
+.seller-edit-modal {
+  width: 100%;
+  max-width: 620px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.seller-edit-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 25px;
+}
+
+.seller-edit-header h2 {
+  margin: 0;
+  font-size: 25px;
+  color: #111827;
+}
+
+.seller-edit-header p {
+  margin: 6px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.seller-edit-close {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #f3f4f6;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+.seller-edit-close:hover {
+  background: #e5e7eb;
+}
+
+.seller-edit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.seller-edit-field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.seller-edit-field input,
+.seller-edit-field select {
+  width: 100%;
+  height: 46px;
+  padding: 0 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 9px;
+  font-size: 15px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.seller-edit-field input:focus,
+.seller-edit-field select:focus {
+  border-color: #111827;
+}
+
+.seller-edit-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.seller-edit-availability {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 25px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.seller-edit-availability input {
+  width: 17px;
+  height: 17px;
+}
+
+.seller-edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.seller-edit-cancel,
+.seller-edit-save {
+  min-width: 130px;
+  height: 45px;
+  padding: 0 20px;
+  border-radius: 9px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-edit-cancel {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.seller-edit-save {
+  background: #111827;
+  border: none;
+  color: #ffffff;
+}
+
+.seller-edit-save:hover {
+  background: #000000;
+}
+
+.seller-edit-save:disabled,
+.seller-edit-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* ================================
+   BACK BUTTON
+================================ */
+
+.seller-products-back {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin-bottom: 10px;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-products-back:hover {
+  color: #111827;
+}
+
+
+/* ================================
+   TENURE
+================================ */
+
+.seller-product-tenure {
+  margin-top: 7px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 650px) {
+
+  .seller-edit-modal {
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .seller-edit-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .seller-edit-actions {
+    flex-direction: column-reverse;
+  }
+
+  .seller-edit-cancel,
+  .seller-edit-save {
+    width: 100%;
+  }
+}
+
+/* ==========================================
+   REAL PRODUCT IMAGE
+========================================== */
+
+.seller-product-image {
+  width: 100%;
+  height: 235px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.seller-real-product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.seller-product-placeholder {
+  font-size: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* ==========================================
+   TENURE
+========================================== */
+
+.seller-product-tenure {
+  margin-top: 8px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* =========================================
+   ACTUAL UPLOADED PRODUCT IMAGE
+========================================= */
+
+.seller-product-image {
+  width: 100%;
+  height: 235px;
+  background: #f3f4f6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.seller-real-product-image {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.seller-product-placeholder {
+  font-size: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.seller-order-management {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid #eaecf0;
+}
+
+.seller-order-management-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.seller-order-management-heading span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #667085;
+}
+
+.seller-order-management-heading strong {
+  font-size: 13px;
+  color: #6d4aff;
+}
+
+.seller-order-status-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.seller-order-status-buttons button {
+  border: 1px solid #d9dee8;
+  background: #ffffff;
+  color: #344054;
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.seller-order-status-buttons button:hover {
+  border-color: #6d4aff;
+  color: #6d4aff;
+}
+
+.seller-order-status-buttons button.active {
+  background: #6d4aff;
+  border-color: #6d4aff;
+  color: #ffffff;
+}
+
+/* =========================================
+   STATUS COLORS
+========================================= */
+
+.seller-order-status.pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.seller-order-status.confirmed {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+.seller-order-status.out-for-delivery {
+  background: #f5f3ff;
+  color: #7c3aed;
+}
+
+.seller-order-status.active-rental {
+  background: #ecfdf3;
+  color: #15803d;
+}
+
+.seller-order-status.completed {
+  background: #f0fdf4;
+  color: #166534;
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+  .seller-order-management-heading {
+    align-items: flex-start;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .seller-order-status-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .seller-order-status-buttons button {
+    width: 100%;
+  }
+}

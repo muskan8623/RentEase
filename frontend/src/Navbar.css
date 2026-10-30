@@ -1,0 +1,177 @@
+/* =====================================================
+   RENTEASE NAVBAR
+===================================================== */
+
+.rentEase-navbar {
+  width: 100%;
+  min-height: 72px;
+  padding: 0 6%;
+
+  background: #ffffff;
+  border-bottom: 1px solid #e7eaf2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  box-sizing: border-box;
+
+  position: relative;
+  z-index: 1000;
+
+  box-shadow: 0 2px 12px rgba(16, 24, 40, 0.05);
+}
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.rentEase-logo {
+  text-decoration: none;
+
+  font-size: 26px;
+  font-weight: 800;
+
+  color: #111827;
+
+  letter-spacing: -0.5px;
+
+  transition: 0.2s ease;
+}
+
+.rentEase-logo span {
+  color: #4f46e5;
+}
+
+.rentEase-logo:hover {
+  transform: translateY(-1px);
+}
+
+/* =====================================================
+   NAVIGATION LINKS
+===================================================== */
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.navbar-link {
+  text-decoration: none;
+
+  color: #4b5563;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  padding: 10px 15px;
+
+  border-radius: 8px;
+
+  transition: all 0.2s ease;
+}
+
+.navbar-link:hover {
+  color: #4f46e5;
+  background: #f5f3ff;
+}
+
+.navbar-link.active {
+  color: #4f46e5;
+  background: #eef2ff;
+}
+
+/* =====================================================
+   MOBILE MENU BUTTON
+===================================================== */
+
+.navbar-menu-toggle {
+  display: none;
+
+  border: none;
+  background: transparent;
+
+  font-size: 26px;
+
+  color: #111827;
+
+  cursor: pointer;
+
+  padding: 6px;
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .rentEase-navbar {
+    padding: 0 4%;
+  }
+
+  .navbar-link {
+    padding: 9px 11px;
+    font-size: 14px;
+  }
+
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 650px) {
+
+  .rentEase-navbar {
+    min-height: 68px;
+    padding: 0 5%;
+  }
+
+  .rentEase-logo {
+    font-size: 23px;
+  }
+
+  .navbar-menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+
+    position: absolute;
+
+    top: 68px;
+    left: 0;
+    right: 0;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e7eaf2;
+
+    box-shadow: 0 8px 20px rgba(16, 24, 40, 0.08);
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 4px;
+
+    padding: 12px;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .navbar-link {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    padding: 12px;
+  }
+}

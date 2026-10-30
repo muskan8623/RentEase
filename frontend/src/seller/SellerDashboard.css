@@ -1,0 +1,476 @@
+
+/* ================================
+   SELLER DASHBOARD
+================================ */
+
+.seller-dashboard {
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.seller-dashboard-header {
+  min-height: 82px;
+  padding: 18px 6%;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.seller-dashboard-header h1 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 750;
+  letter-spacing: -0.5px;
+  color: #111827;
+}
+
+.seller-dashboard-header p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.seller-logout-button {
+  border: none;
+  background: #111827;
+  color: #ffffff;
+
+  padding: 11px 20px;
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.seller-logout-button:hover {
+  background: #374151;
+  transform: translateY(-1px);
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+
+.seller-dashboard-content {
+  width: min(1180px, 92%);
+  margin: 0 auto;
+  padding: 42px 0 60px;
+}
+
+/* ================================
+   WELCOME
+================================ */
+
+.seller-welcome {
+  margin-bottom: 32px;
+}
+
+.seller-welcome h2 {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 750;
+  color: #111827;
+  letter-spacing: -0.7px;
+}
+
+.seller-welcome p {
+  margin: 9px 0 0;
+  max-width: 650px;
+  color: #6b7280;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ================================
+   DASHBOARD CARDS
+================================ */
+
+.seller-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.seller-dashboard-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  padding: 26px;
+
+  min-height: 235px;
+
+  box-shadow: 0 8px 25px rgba(15, 23, 42, 0.05);
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.seller-dashboard-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(15, 23, 42, 0.09);
+  border-color: #d1d5db;
+}
+
+.seller-card-icon {
+  width: 52px;
+  height: 52px;
+
+  border-radius: 13px;
+
+  background: #f3f4f6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 25px;
+
+  margin-bottom: 20px;
+}
+
+.seller-dashboard-card h3 {
+  margin: 0 0 8px;
+
+  font-size: 19px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.seller-dashboard-card p {
+  margin: 0;
+
+  color: #6b7280;
+
+  font-size: 14px;
+  line-height: 1.55;
+
+  flex: 1;
+}
+
+.seller-dashboard-card button {
+  margin-top: 20px;
+
+  border: none;
+  background: transparent;
+
+  padding: 0;
+
+  color: #111827;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.seller-dashboard-card button:hover {
+  text-decoration: underline;
+}
+
+/* ================================
+   BUSINESS OVERVIEW
+================================ */
+
+.seller-stats-section {
+  margin-top: 52px;
+}
+
+.seller-stats-section h2 {
+  margin: 0 0 20px;
+
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #111827;
+}
+
+.seller-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.seller-stat-card {
+  background: #ffffff;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+
+  padding: 22px;
+
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04);
+
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.seller-stat-card span {
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.seller-stat-card strong {
+  color: #111827;
+  font-size: 27px;
+  font-weight: 750;
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+  .seller-dashboard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .seller-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+  .seller-dashboard-header {
+    padding: 16px 5%;
+  }
+
+  .seller-dashboard-header h1 {
+    font-size: 21px;
+  }
+
+  .seller-dashboard-header p {
+    font-size: 12px;
+  }
+
+  .seller-logout-button {
+    padding: 9px 13px;
+    font-size: 13px;
+  }
+
+  .seller-dashboard-content {
+    width: 90%;
+    padding: 30px 0 45px;
+  }
+
+  .seller-welcome h2 {
+    font-size: 25px;
+  }
+
+  .seller-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .seller-stat-card {
+    padding: 17px;
+  }
+
+  .seller-stat-card strong {
+    font-size: 23px;
+  }
+}
+
+@media (max-width: 400px) {
+  .seller-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-dashboard-header {
+    align-items: flex-start;
+  }
+}
+
+/* =================================
+   INVENTORY PREVIEW
+================================= */
+
+.seller-inventory-section {
+  margin-top: 40px;
+}
+
+.seller-inventory-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.seller-inventory-heading h2 {
+  margin: 0;
+  color: #111827;
+}
+
+.seller-inventory-heading p {
+  margin: 5px 0 0;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.seller-inventory-heading button {
+  border: none;
+  background: transparent;
+  color: #111827;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.seller-inventory-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(4, 1fr);
+  gap: 18px;
+}
+
+.seller-inventory-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: 0.2s ease;
+}
+
+.seller-inventory-card:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 10px 30px
+    rgba(0, 0, 0, 0.08);
+}
+
+.seller-inventory-image {
+  height: 180px;
+  background: #f5f6f8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.seller-inventory-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seller-inventory-image span {
+  font-size: 55px;
+}
+
+.seller-inventory-info {
+  padding: 16px;
+}
+
+.seller-inventory-info > span {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.seller-inventory-info h3 {
+  margin: 6px 0;
+  color: #111827;
+  font-size: 16px;
+}
+
+.seller-inventory-info strong {
+  color: #111827;
+  font-size: 17px;
+}
+
+.seller-inventory-info small {
+  color: #6b7280;
+  font-weight: 400;
+}
+
+.inventory-available,
+.inventory-unavailable {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.inventory-available {
+  color: #15803d;
+}
+
+.inventory-unavailable {
+  color: #dc2626;
+}
+
+.seller-inventory-loading,
+.seller-inventory-empty {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 45px 20px;
+  text-align: center;
+}
+
+.seller-inventory-empty > div {
+  font-size: 40px;
+}
+
+.seller-inventory-empty h3 {
+  margin: 10px 0 5px;
+}
+
+.seller-inventory-empty p {
+  color: #6b7280;
+}
+
+.seller-inventory-empty button {
+  border: none;
+  background: #111827;
+  color: white;
+  padding: 11px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+  .seller-inventory-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .seller-inventory-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seller-inventory-heading {
+    align-items: flex-start;
+  }
+}
