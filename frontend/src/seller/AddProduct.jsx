@@ -3,352 +3,237 @@ import { useNavigate } from "react-router-dom";
 import "./AddProduct.css";
 
 function AddProduct() {
-
   const navigate = useNavigate();
 
-
   const [formData, setFormData] = useState({
-
     name: "",
-
     category: "Furniture",
-
     price: "",
-
     deposit: "",
-
     tenure: "3 - 12 Months",
-
     available: true,
-
     image: "",
-
   });
 
-
-  const [imagePreview, setImagePreview] =
-    useState("");
-
-
-  const [saving, setSaving] =
-    useState(false);
-
+  const [imagePreview, setImagePreview] = useState("");
+  const [saving, setSaving] = useState(false);
 
   /* =====================================================
      FORM CHANGE
   ===================================================== */
 
   const handleChange = (e) => {
-
-    const {
-      name,
-      value,
-      type,
-      checked,
-    } = e.target;
-
+    const { name, value, type, checked } = e.target;
 
     setFormData((previous) => ({
-
       ...previous,
-
-      [name]:
-        type === "checkbox"
-          ? checked
-          : value,
-
+      [name]: type === "checkbox" ? checked : value,
     }));
-
   };
-
 
   /* =====================================================
      IMAGE UPLOAD
   ===================================================== */
 
   const handleImageChange = (e) => {
-
-    const file =
-      e.target.files?.[0];
-
+    const file = e.target.files?.[0];
 
     if (!file) {
       return;
     }
 
-
     /* FILE TYPE */
 
-    if (
-      !file.type.startsWith(
-        "image/"
-      )
-    ) {
-
-      alert(
-        "Please select an image file."
-      );
-
+    if (!file.type.startsWith("image/")) {
+      alert("Please select an image file.");
       return;
     }
-
 
     /* FILE SIZE */
 
-    if (
-      file.size >
-      2 * 1024 * 1024
-    ) {
-
-      alert(
-        "Image must be less than 2 MB."
-      );
-
+    if (file.size > 2 * 1024 * 1024) {
+      alert("Image must be less than 2 MB.");
       return;
     }
 
-
     /* READ FILE */
 
-    const reader =
-      new FileReader();
-
+    const reader = new FileReader();
 
     reader.onload = () => {
+      const image = reader.result;
 
-      const image =
-        reader.result;
+      setImagePreview(image);
 
-
-      setImagePreview(
-        image
-      );
-
-
-      setFormData(
-        (previous) => ({
-
-          ...previous,
-
-          image:
-            image,
-
-        })
-      );
-
+      setFormData((previous) => ({
+        ...previous,
+        image: image,
+      }));
     };
-
 
     reader.onerror = () => {
-
-      alert(
-        "Unable to read image."
-      );
-
+      alert("Unable to read image.");
     };
 
-
-    reader.readAsDataURL(
-      file
-    );
-
+    reader.readAsDataURL(file);
   };
-
 
   /* =====================================================
      REMOVE IMAGE
   ===================================================== */
 
   const removeImage = () => {
-
     setImagePreview("");
 
-    setFormData(
-      (previous) => ({
-
-        ...previous,
-
-        image: "",
-
-      })
-    );
-
+    setFormData((previous) => ({
+      ...previous,
+      image: "",
+    }));
   };
-
 
   /* =====================================================
      SAVE PRODUCT
   ===================================================== */
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-
 
     if (saving) {
       return;
     }
 
+    /* PRODUCT NAME */
 
     if (!formData.name.trim()) {
-
-      alert(
-        "Please enter product name."
-      );
-
+      alert("Please enter product name.");
       return;
     }
 
+    /* MONTHLY RENT */
 
     if (
       formData.price === "" ||
       Number(formData.price) < 0
     ) {
-
-      alert(
-        "Please enter a valid monthly rent."
-      );
-
+      alert("Please enter a valid monthly rent.");
       return;
     }
 
+    /* SECURITY DEPOSIT */
 
     if (
       formData.deposit === "" ||
       Number(formData.deposit) < 0
     ) {
-
-      alert(
-        "Please enter a valid security deposit."
-      );
-
+      alert("Please enter a valid security deposit.");
       return;
     }
 
+    /* PRODUCT IMAGE */
 
     if (!formData.image) {
-
-      alert(
-        "Please upload a product image."
-      );
-
+      alert("Please upload a product image.");
       return;
     }
-
 
     setSaving(true);
 
-
     try {
+      console.log("Sending product with image...");
+
+      /* =====================================================
+         GET SELLER TOKEN
+      ===================================================== */
+
+      const token = localStorage.getItem("rentEaseToken");
 
       console.log(
-        "Sending product with image..."
+        "Seller token exists:",
+        Boolean(token)
       );
 
-
-      const response =
-        await fetch(
-          "http://localhost:5000/api/products",
-          {
-
-            method: "POST",
-
-            headers: {
-
-              "Content-Type":
-                "application/json",
-
-            },
-
-            body:
-              JSON.stringify({
-
-                name:
-                  formData.name.trim(),
-
-                category:
-                  formData.category,
-
-                price:
-                  Number(formData.price),
-
-                deposit:
-                  Number(formData.deposit),
-
-                tenure:
-                  formData.tenure,
-
-                available:
-                  formData.available,
-
-                image:
-                  formData.image,
-
-              }),
-
-          }
-        );
-
-
-      const data =
-        await response.json();
-
-
-      console.log(
-        "Server response:",
-        data
-      );
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          data.message ||
-          "Unable to add product."
-        );
-
+      if (!token) {
+        throw new Error("Please login as a seller.");
       }
 
+      /* =====================================================
+         SEND PRODUCT TO BACKEND
+      ===================================================== */
 
-      alert(
-        "Product added successfully!"
+      const response = await fetch(
+        "http://localhost:5000/api/products",
+        {
+          method: "POST",
+
+          headers: {
+            "Content-Type": "application/json",
+
+            /* IMPORTANT:
+               Send JWT to seller-protected backend
+            */
+            Authorization: `Bearer ${token}`,
+          },
+
+          body: JSON.stringify({
+            name: formData.name.trim(),
+
+            category: formData.category,
+
+            price: Number(formData.price),
+
+            deposit: Number(formData.deposit),
+
+            tenure: formData.tenure,
+
+            available: formData.available,
+
+            image: formData.image,
+          }),
+        }
       );
 
+      const data = await response.json();
 
-      navigate(
-        "/seller/products"
-      );
+      console.log("Server response:", data);
 
+      /* =====================================================
+         HANDLE ERROR
+      ===================================================== */
 
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Unable to add product."
+        );
+      }
+
+      /* =====================================================
+         SUCCESS
+      ===================================================== */
+
+      alert("Product added successfully!");
+
+      navigate("/seller/products");
     } catch (error) {
-
       console.error(
         "Add product error:",
         error
       );
 
-
       alert(
         error.message ||
-        "Unable to add product."
+          "Unable to add product."
       );
-
-
     } finally {
-
       setSaving(false);
-
     }
-
   };
 
-
   return (
-
     <div className="add-product-page">
 
-
-      {/* HEADER */}
+      {/* =====================================================
+          HEADER
+      ===================================================== */}
 
       <header className="add-product-header">
 
@@ -358,19 +243,15 @@ function AddProduct() {
             type="button"
             className="add-product-back"
             onClick={() =>
-              navigate(
-                "/seller/dashboard"
-              )
+              navigate("/seller/dashboard")
             }
           >
             ← Back to Dashboard
           </button>
 
-
           <h1>
             Add New Product
           </h1>
-
 
           <p>
             Add your product with
@@ -381,15 +262,16 @@ function AddProduct() {
 
       </header>
 
+      {/* =====================================================
+          MAIN CONTENT
+      ===================================================== */}
 
       <main className="add-product-content">
-
 
         <form
           className="add-product-form"
           onSubmit={handleSubmit}
         >
-
 
           {/* =================================================
               PRODUCT IMAGE
@@ -397,13 +279,11 @@ function AddProduct() {
 
           <section className="form-section">
 
-
             <div className="form-section-heading">
 
               <span>
                 01
               </span>
-
 
               <div>
 
@@ -420,7 +300,6 @@ function AddProduct() {
 
             </div>
 
-
             {!imagePreview ? (
 
               <label
@@ -432,26 +311,20 @@ function AddProduct() {
                   id="productImage"
                   type="file"
                   accept="image/*"
-                  onChange={
-                    handleImageChange
-                  }
+                  onChange={handleImageChange}
                 />
-
 
                 <div className="image-upload-icon">
                   📷
                 </div>
 
-
                 <h3>
                   Add Product Image
                 </h3>
 
-
                 <p>
                   Click here to choose an image
                 </p>
-
 
                 <small>
                   JPG, PNG or WEBP · Maximum 2 MB
@@ -463,13 +336,11 @@ function AddProduct() {
 
               <div className="uploaded-image-container">
 
-
                 <img
                   src={imagePreview}
                   alt="Product preview"
                   className="uploaded-product-image"
                 />
-
 
                 <div className="uploaded-image-footer">
 
@@ -477,12 +348,9 @@ function AddProduct() {
                     ✓ Image selected
                   </span>
 
-
                   <button
                     type="button"
-                    onClick={
-                      removeImage
-                    }
+                    onClick={removeImage}
                   >
                     Remove Image
                   </button>
@@ -495,20 +363,17 @@ function AddProduct() {
 
           </section>
 
-
           {/* =================================================
               BASIC INFORMATION
           ================================================= */}
 
           <section className="form-section">
 
-
             <div className="form-section-heading">
 
               <span>
                 02
               </span>
-
 
               <div>
 
@@ -524,9 +389,7 @@ function AddProduct() {
 
             </div>
 
-
             <div className="form-grid">
-
 
               <div className="form-field form-field-full">
 
@@ -534,22 +397,16 @@ function AddProduct() {
                   Product Name
                 </label>
 
-
                 <input
                   type="text"
                   name="name"
                   placeholder="e.g. Premium 3-Seater Sofa"
-                  value={
-                    formData.name
-                  }
-                  onChange={
-                    handleChange
-                  }
+                  value={formData.name}
+                  onChange={handleChange}
                   required
                 />
 
               </div>
-
 
               <div className="form-field">
 
@@ -557,15 +414,10 @@ function AddProduct() {
                   Category
                 </label>
 
-
                 <select
                   name="category"
-                  value={
-                    formData.category
-                  }
-                  onChange={
-                    handleChange
-                  }
+                  value={formData.category}
+                  onChange={handleChange}
                 >
 
                   <option value="Furniture">
@@ -580,22 +432,16 @@ function AddProduct() {
 
               </div>
 
-
               <div className="form-field">
 
                 <label>
                   Rental Tenure
                 </label>
 
-
                 <select
                   name="tenure"
-                  value={
-                    formData.tenure
-                  }
-                  onChange={
-                    handleChange
-                  }
+                  value={formData.tenure}
+                  onChange={handleChange}
                 >
 
                   <option value="3 - 12 Months">
@@ -618,20 +464,17 @@ function AddProduct() {
 
           </section>
 
-
           {/* =================================================
               PRICING
           ================================================= */}
 
           <section className="form-section">
 
-
             <div className="form-section-heading">
 
               <span>
                 03
               </span>
-
 
               <div>
 
@@ -647,9 +490,7 @@ function AddProduct() {
 
             </div>
 
-
             <div className="form-grid">
-
 
               <div className="form-field">
 
@@ -657,25 +498,19 @@ function AddProduct() {
                   Monthly Rent
                 </label>
 
-
                 <div className="input-with-symbol">
 
                   <span>
                     ₹
                   </span>
 
-
                   <input
                     type="number"
                     name="price"
                     min="0"
                     placeholder="999"
-                    value={
-                      formData.price
-                    }
-                    onChange={
-                      handleChange
-                    }
+                    value={formData.price}
+                    onChange={handleChange}
                     required
                   />
 
@@ -683,13 +518,11 @@ function AddProduct() {
 
               </div>
 
-
               <div className="form-field">
 
                 <label>
                   Security Deposit
                 </label>
-
 
                 <div className="input-with-symbol">
 
@@ -697,18 +530,13 @@ function AddProduct() {
                     ₹
                   </span>
 
-
                   <input
                     type="number"
                     name="deposit"
                     min="0"
                     placeholder="2500"
-                    value={
-                      formData.deposit
-                    }
-                    onChange={
-                      handleChange
-                    }
+                    value={formData.deposit}
+                    onChange={handleChange}
                     required
                   />
 
@@ -720,20 +548,17 @@ function AddProduct() {
 
           </section>
 
-
           {/* =================================================
               AVAILABILITY
           ================================================= */}
 
           <section className="form-section">
 
-
             <div className="form-section-heading">
 
               <span>
                 04
               </span>
-
 
               <div>
 
@@ -749,32 +574,22 @@ function AddProduct() {
 
             </div>
 
-
-            <label
-              className="availability-toggle"
-            >
+            <label className="availability-toggle">
 
               <input
                 type="checkbox"
                 name="available"
-                checked={
-                  formData.available
-                }
-                onChange={
-                  handleChange
-                }
+                checked={formData.available}
+                onChange={handleChange}
               />
 
-
               <span className="toggle-slider"></span>
-
 
               <div>
 
                 <strong>
                   Product Available for Rental
                 </strong>
-
 
                 <small>
                   Customers can rent this product.
@@ -786,36 +601,31 @@ function AddProduct() {
 
           </section>
 
-
-          {/* ACTIONS */}
+          {/* =================================================
+              ACTIONS
+          ================================================= */}
 
           <div className="add-product-actions">
-
 
             <button
               type="button"
               className="cancel-product-button"
               onClick={() =>
-                navigate(
-                  "/seller/dashboard"
-                )
+                navigate("/seller/dashboard")
               }
               disabled={saving}
             >
               Cancel
             </button>
 
-
             <button
               type="submit"
               className="save-product-button"
               disabled={saving}
             >
-
               {saving
                 ? "Saving..."
                 : "Save Product"}
-
             </button>
 
           </div>
